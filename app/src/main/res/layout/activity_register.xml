@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Register">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:backgroundTint="@color/green_500"
+
+        app:cardCornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="CADASTRO"
+                android:textSize="32sp"
+
+                android:textColor="@color/green_600"
+
+                android:paddingVertical="10dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:gravity="center"
+                >
+
+                <Button
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="Pessoa"
+                    android:textSize="20sp"
+                    app:cornerRadius="0dp"
+                    android:backgroundTint="@color/green_600"
+                    android:textColor="@color/gray_100"/>
+
+                <Button
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="Empresa"
+                    android:textSize="20sp"
+                    app:cornerRadius="0dp"
+                    android:backgroundTint="@color/gray_100"
+                    android:textColor="@color/green_500"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nome"
+
+                    android:drawableLeft="@drawable/svg_person"
+
+                    android:drawablePadding="10dp"
+
+                    android:textColorHint="@color/gray_100"
+                    android:backgroundTint="@color/white"
+
+                    android:layout_marginTop="10dp"
+
+                    android:layout_marginHorizontal="20dp"
+                    android:textSize="24sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Email"
+
+                    android:inputType="textEmailAddress"
+
+                    android:drawableLeft="@drawable/svg_email"
+
+                    android:drawablePadding="10dp"
+
+                    android:textColorHint="@color/gray_100"
+                    android:backgroundTint="@color/white"
+
+                    android:layout_marginTop="10dp"
+
+                    android:layout_marginHorizontal="20dp"
+                    android:textSize="24sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Senha"
+
+                    android:inputType="textPassword"
+
+                    android:drawableLeft="@drawable/svg_password"
+
+                    android:drawablePadding="10dp"
+
+                    android:textColorHint="@color/gray_100"
+                    android:backgroundTint="@color/white"
+
+                    android:layout_marginTop="10dp"
+
+                    android:layout_marginHorizontal="20dp"
+                    android:textSize="24sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Confirme a senha"
+
+                    android:inputType="textPassword"
+
+                    android:drawableLeft="@drawable/svg_repeat"
+
+                    android:drawablePadding="10dp"
+
+                    android:textColorHint="@color/gray_100"
+                    android:backgroundTint="@color/white"
+
+                    android:layout_marginTop="10dp"
+
+                    android:layout_marginHorizontal="20dp"
+                    android:textSize="24sp" />
+            </LinearLayout>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CADASTRAR"
+                android:textSize="20sp"
+
+                android:backgroundTint="@color/green_200"
+                android:textColor="@color/gray_500"
+
+                android:layout_gravity="center"
+
+                android:layout_margin="10dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txtHaveAcount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textSize="16sp"
+
+                    android:textColor="@color/gray_300"
+                    android:text="Possui uma conta?" />
+
+                <TextView
+                    android:id="@+id/txtMakeLogin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textSize="24sp"
+
+                    android:paddingVertical="10dp"
+                    android:textColor="@color/gray_800"
+                    android:text="Faça o Login!" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
