@@ -12,6 +12,9 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
     TextView txtCreateAcount;
 
+    Button btnPerson;
+    Button btnCompany;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
