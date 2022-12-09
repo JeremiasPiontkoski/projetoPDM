@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Register">
+    tools:context=".RegisterPersonActivity">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
 
-        android:backgroundTint="@color/green_500"
+        android:backgroundTint="@color/green_600"
 
         app:cardCornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -24,49 +24,19 @@
             android:orientation="vertical"
             android:layout_gravity="center_vertical">
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/light_col"
+                android:layout_gravity="center"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="CADASTRO"
-                android:textSize="32sp"
-
-                android:textColor="@color/green_600"
-
-                android:paddingVertical="10dp"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:orientation="horizontal"
-                android:gravity="center"
-                >
-
-                <Button
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-
-                    android:id="@+id/btnPerson"
-
-                    android:text="Pessoa"
-                    android:textSize="20sp"
-                    app:cornerRadius="0dp"
-                    android:backgroundTint="@color/green_600"
-                    android:textColor="@color/gray_100"/>
-
-                <Button
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-
-                    android:id="@+id/btnCompany"
-
-                    android:text="Empresa"
-                    android:textSize="20sp"
-                    app:cornerRadius="0dp"
-                    android:backgroundTint="@color/gray_100"
-                    android:textColor="@color/green_500"/>
-            </LinearLayout>
+                android:text="Cadastro de Empresa"
+                android:textSize="32dp"
+                android:textColor="@color/white"
+                android:layout_gravity="center"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -176,8 +146,6 @@
                     android:layout_height="wrap_content"
 
                     android:id="@+id/editCnpj"
-
-                    android:visibility="gone"
 
                     android:hint="CNPJ"
 

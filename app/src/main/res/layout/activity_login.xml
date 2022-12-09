@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/green_600"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imgLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:src="@drawable/light_col" />
+
+        <TextView
+            android:id="@+id/txtLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingBottom="10dp"
+            android:text="Login"
+            android:textColor="@color/gray_300"
+            android:textSize="32sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="20dp">
+
+            <EditText
+                android:id="@+id/edtEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/white"
+                android:drawableLeft="@drawable/svg_email"
+                android:drawablePadding="10dp"
+                android:ems="10"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:textColorHint="@color/gray_100"
+                android:textSize="24sp"
+                tools:ignore="TouchTargetSizeCheck" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="20dp">
+
+            <EditText
+                android:id="@+id/editPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/white"
+                android:drawableLeft="@drawable/svg_password"
+                android:drawablePadding="10dp"
+                android:ems="10"
+                android:hint="Senha"
+                android:inputType="textPassword"
+                android:textColorHint="@color/gray_100"
+                android:textSize="24sp"
+                tools:ignore="TouchTargetSizeCheck" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginVertical="10dp"
+
+            android:backgroundTint="@color/green_200"
+            android:text="Login"
+
+            android:textColor="@color/gray_500"
+            android:textSize="20sp"
+            app:cornerRadius="@null" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtNotCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Não possui uma conta?"
+
+                android:textColor="@color/gray_300"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/txtCreateAcount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingVertical="10dp"
+
+                android:text="Crie Uma!"
+                android:textColor="@color/gray_800"
+                android:textSize="24sp" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
