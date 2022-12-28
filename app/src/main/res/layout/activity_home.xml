@@ -6,8 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".HomeActivity">
 
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fragmentContainerView"
+            android:name="com.example.projetopdm.perfilFragment"
+
+            app:layout_constraintBottom_toBottomOf="@+id/menuLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
     <LinearLayout
+        android:id="@+id/menuLayout"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:orientation="horizontal"
@@ -20,24 +28,28 @@
         android:background="@color/green_600">
         
         <ImageView
+            android:id="@+id/imgHome"
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:src="@drawable/svg_home"
             android:layout_weight="1"/>
         
-        <ImageView
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:src="@drawable/svg_search"
-            android:layout_weight="1"/>
+<!--        <ImageView-->
+<!--            android:id="@+id/imgSearch"-->
+<!--            android:layout_width="45dp"-->
+<!--            android:layout_height="45dp"-->
+<!--            android:src="@drawable/svg_search"-->
+<!--            android:layout_weight="1"/>-->
 
         <ImageView
+            android:id="@+id/imgCreateRepository"
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:src="@drawable/svg_plus"
             android:layout_weight="1"/>
 
         <ImageView
+            android:id="@+id/imgPerfil"
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:src="@drawable/svg_person"
