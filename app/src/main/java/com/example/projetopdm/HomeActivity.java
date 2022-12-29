@@ -5,9 +5,17 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.telecom.Call;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.Toast;
+
+import java.util.List;
+
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HomeActivity extends AppCompatActivity {
     ImageView imgCreateRepository;
@@ -50,8 +58,8 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                homeFragment homeFragment = new homeFragment();
-                fragmentTransaction.replace(R.id.fragmentContainerView, homeFragment);
+                RepositoryList repositoryList = new RepositoryList();
+                fragmentTransaction.replace(R.id.fragmentContainerView, repositoryList);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
             }
