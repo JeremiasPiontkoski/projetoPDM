@@ -4,6 +4,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.Path;
 
@@ -13,4 +14,10 @@ public interface Api {
     
     @GET("getRepo")
     Call<List<Repository>> getRepository();
+
+    @GET("getRepository/{idRepository}")
+    Call<Repository> getRepositoryById(@Path("idRepository") int idRepository);
+
+    @GET("repositories")
+    Call<List<Repository>> getRepositories(@Header("Email") String email, @Header("Password") String password, @Header("Rule") String rule);
 }

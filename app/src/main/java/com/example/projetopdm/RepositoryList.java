@@ -51,7 +51,28 @@ public class RepositoryList extends Fragment {
         rvRepositories.setLayoutManager(layout);
         rvRepositories.setAdapter(repositoryAdapter);
 
-        getRepositoriesFromApi();
+//        getRepositoriesFromApi();
+        getRepositories();
+    }
+
+    private void getRepositories()
+    {
+        Call<List<Repository>> call = RetrofitClient.getInstance().getMyApi().getRepositories("hope@gmail.com", "12345678", "C");
+        call.enqueue(new Callback<List<Repository>>() {
+            @Override
+            public void onResponse(Call<List<Repository>> call, Response<List<Repository>> response) {
+                List<Repository> repositoryList = response.body();
+                for(int i = 0; i < repositoryList.size(); i++) {
+                    repositories.add(repositoryList.get(i));
+                }
+                repositoryAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onFailure(Call<List<Repository>> call, Throwable t) {
+                Log.d("NAO VAI", t.toString());
+            }
+        });
     }
 
     private void getRepositoriesFromApi() {
@@ -71,36 +92,5 @@ public class RepositoryList extends Fragment {
                 Log.d("NAO VAI", t.toString());
             }
         });
-
-
-
-
-
-
-//        for (int i=0; i<10; i++) {
-//            int pokeId = generateRandom();
-//            Call<Pokemon> call = RetrofitClient.getInstance().getMyApi().getPoke(pokeId);
-//            call.enqueue(new Callback<Pokemon>() {
-//                @Override
-//                public void onResponse(Call<Pokemon> call, Response<Pokemon> response) {
-//                    Pokemon poke = response.body();
-//                    pokemons.add(poke);
-//                    pokemonAdapter.notifyDataSetChanged();
-//                }
-//
-//                @Override
-//                public void onFailure(Call<Pokemon> call, Throwable t) {
-//                    Log.d("TESTE", t.toString());
-//                }
-//            });
-//        }
-
-    }
-
-    private int generateRandom() {
-        int min = 0;
-        int max = 800;
-
-        return (int)Math.floor(Math.random()*(max-min+1)+min);
     }
 }

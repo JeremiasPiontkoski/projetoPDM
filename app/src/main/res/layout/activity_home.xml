@@ -33,13 +33,6 @@
             android:layout_height="45dp"
             android:src="@drawable/svg_home"
             android:layout_weight="1"/>
-        
-<!--        <ImageView-->
-<!--            android:id="@+id/imgSearch"-->
-<!--            android:layout_width="45dp"-->
-<!--            android:layout_height="45dp"-->
-<!--            android:src="@drawable/svg_search"-->
-<!--            android:layout_weight="1"/>-->
 
         <ImageView
             android:id="@+id/imgCreateRepository"

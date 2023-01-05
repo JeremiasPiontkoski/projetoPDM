@@ -45,41 +45,18 @@ public class RepositoryAdapter extends RecyclerView.Adapter<RepositoryAdapter.Vi
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Repository repository = repositories.get(position);
-        holder.txtName.setText(repository.getName());
-//        holder.tvName.setText(repository.getName());
+        holder.txtName.setText(repository.getDescription());
 
-//        holder.tvWeight.setText( "" + repository.getWeight() );
-//        holder.tvType1.setText( getType(repository.getTypess(), 0) );
-//        há casos em que não possui mais de um tipo
-//        if ( getType(pokemon.getTypess(), 1).equals("") ) {
-//            holder.tvType2.setVisibility(View.INVISIBLE);
-//        } else {
-//            holder.tvType2.setText( getType(pokemon.getTypess(), 1) );
-//        }
-
-        //para pegar a propriedade front_default é necessário navegar no JSON usando os métodos
-        //getAsJsonObject quando a prop for um objeto e getAsJsonPrimitive quando for o valor em si
-//        String urlImage = repository.getSprites()
-//                .getAsJsonObject("other")
-//                .getAsJsonObject("official-artwork")
-//                .getAsJsonPrimitive("front_default")
-//                .getAsString();
-//
-//        Picasso.get().load(urlImage).into(holder.ivPokeImage);
-//        changeColorCardView(holder, urlImage);
-        //o clique é no CardView
-//        holder.cvPokemon.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                //para instanciar o FragmentTransaction é necessário usar o método  getSupportFragmentManager
-//                //deste modo, é preciso fazer o casting do context com ((FragmentActivity) context)
-//                FragmentTransaction fragmentTransaction = ((FragmentActivity) context).getSupportFragmentManager().beginTransaction();
-//                PokemonDetail pokemonDetail = PokemonDetail.newInstance(pokemon.getId(), holder.cvPokemon.getCardBackgroundColor().getDefaultColor());
-//                fragmentTransaction.replace(R.id.fragmentContainerView, pokemonDetail);
-//                fragmentTransaction.addToBackStack(null);
-//                fragmentTransaction.commit();
-//            }
-//        });
+        holder.cvRepository.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentTransaction fragmentTransaction = ((FragmentActivity) context).getSupportFragmentManager().beginTransaction();
+                RepositoryDetail repositoryDetail = RepositoryDetail.newInstance(repository.getId());
+                fragmentTransaction.replace(R.id.fragmentContainerView, repositoryDetail);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
     }
 
     @Override
@@ -89,37 +66,13 @@ public class RepositoryAdapter extends RecyclerView.Adapter<RepositoryAdapter.Vi
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         final TextView txtName;
+        final CardView cvRepository;
         public ViewHolder(View view) {
             super(view);
             txtName = (TextView) view.findViewById(R.id.txtName);
+            cvRepository = (CardView) view.findViewById(R.id.cardRepository);
         }
     }
-
-    //método para trocar a cor de fundo do CardView. Usados os seguintes exemplos
-    //https://stackoverflow.com/questions/20181491/use-picasso-to-get-a-callback-with-a-bitmap
-    //https://developer.android.com/training/material/palette-colors
-//    private void changeColorCardView(ViewHolder holder, String urlImage) {
-//        Picasso.get()
-//                .load(urlImage)
-//                .into(new Target() {
-//                    @Override
-//                    public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-//                        Palette palette = Palette.from(bitmap).generate();
-//                        int color = palette.getDominantColor( context.getResources().getColor( R.color.purple_200 ) );
-//                        holder.cardR .setCardBackgroundColor(color);
-//                    }
-//
-//                    @Override
-//                    public void onBitmapFailed(Exception e, Drawable errorDrawable) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onPrepareLoad(Drawable placeHolderDrawable) {
-//
-//                    }
-//                });
-//    }
 
     private String getName(JsonArray name, int position) {
         try {

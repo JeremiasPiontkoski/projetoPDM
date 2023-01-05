@@ -5,14 +5,16 @@ import com.google.gson.annotations.SerializedName;
 
 public class Repository {
     private int id;
-
     private String name;
     private String language;
     private String description;
     private JsonArray repository;
 
-    public Repository(String name){
+    public Repository(int id, String name, String language, String description){
+        this.id = id;
         this.name = name;
+        this.language = language;
+        this.description = description;
     }
 
     public String getName() {
