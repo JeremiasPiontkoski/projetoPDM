@@ -43,7 +43,6 @@ public class RepositoryList extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-
         rvRepositories = getActivity().findViewById(R.id.rvRepositories);
         repositoryAdapter = new RepositoryAdapter(repositories);
         RecyclerView.LayoutManager layout =

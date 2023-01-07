@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.telecom.Call;
 import android.view.View;
@@ -27,6 +28,10 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        Intent it = getIntent();
+
+        User user = getIntent().getExtras().getParcelable(LoginActivity.KEY_USER);
 
         imgCreateRepository = findViewById(R.id.imgCreateRepository);
         imgPerfil = findViewById(R.id.imgPerfil);

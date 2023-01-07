@@ -1,11 +1,12 @@
 package com.example.projetopdm;
 
+import android.text.Editable;
+
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
-import retrofit2.http.Headers;
 import retrofit2.http.Path;
 
 public interface Api {
@@ -20,4 +21,7 @@ public interface Api {
 
     @GET("repositories")
     Call<List<Repository>> getRepositories(@Header("Email") String email, @Header("Password") String password, @Header("Rule") String rule);
+
+    @GET("user")
+    Call<User> getUser(@Header("Email") String email, @Header("Password") String password, @Header("Rule") String rule);
 }
