@@ -55,8 +55,6 @@ public class createRepositoryFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-        testing();
     }
 
     @Override
@@ -64,17 +62,5 @@ public class createRepositoryFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_create_repository, container, false);
-    }
-
-    private void testing() {
-        Button btn = getActivity().findViewById(R.id.buttonClick);
-        TextView txtName = getActivity().findViewById(R.id.textName);
-
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
     }
 }

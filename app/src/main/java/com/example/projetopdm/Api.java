@@ -24,4 +24,7 @@ public interface Api {
 
     @GET("user")
     Call<User> getUser(@Header("Email") String email, @Header("Password") String password, @Header("Rule") String rule);
+
+    @GET("getLanguage/{idLanguage}")
+    Call<Language> getLanguage(@Path("idLanguage") int idLanguage, @Header("Email") String email, @Header("Password") String password, @Header("Rule") String rule);
 }

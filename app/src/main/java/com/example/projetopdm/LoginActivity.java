@@ -34,8 +34,9 @@ public class LoginActivity extends AppCompatActivity{
 
     public static String KEY_PREFERENCE = "prefs";
     public static String KEY_USER_DATA = "user";
+    public static String KEY_USER_HEADER_EMAIL = "headerEmail";
+    public static String KEY_USER_HEADER_PASSWORD = "headerPassword";
 
-    public static String KEY_USER = "user";
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -72,17 +73,18 @@ public class LoginActivity extends AppCompatActivity{
     }
 
     private void login() {
+        String email = "update2@gmail.com";
+        String password = "12345678";
 //        Call<User> call = RetrofitClient.getInstance().getMyApi().getUser(edtEmail.getText().toString(), edtPassword.getText().toString(), "C");
-        Call<User> call = RetrofitClient.getInstance().getMyApi().getUser("update2@gmail.com", "12345678", "C");
+        Call<User> call = RetrofitClient.getInstance().getMyApi().getUser(email, password, "C");
 
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 User user = response.body();
 
-//                User user1 = new User(user.getCode(), user.getId(), user.getName(), user.getEmail(), user.getDescription());
-
                 if(user.isLogged()) {
+                    saveData(email, password);
                     saveData(user);
                     Intent it = new Intent(LoginActivity.this, HomeActivity.class);
                     startActivity(it);
@@ -98,6 +100,14 @@ public class LoginActivity extends AppCompatActivity{
                 Log.d("NAO VAI", t.toString());
             }
         });
+    }
+
+    private void saveData(String email, String password) {
+        SharedPreferences preferences = getSharedPreferences(KEY_PREFERENCE, MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString(KEY_USER_HEADER_EMAIL, email);
+        editor.putString(KEY_USER_HEADER_PASSWORD, password);
+        editor.commit();
     }
 
     private void saveData(User user) {

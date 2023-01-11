@@ -7,18 +7,23 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
 
-import org.w3c.dom.Text;
-
 import java.io.Serializable;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -67,6 +72,19 @@ public class perfilFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         getUser();
+
+        Button btn = getActivity().findViewById(R.id.btnMyRepositories);
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                RepositoryList repositoryList = new RepositoryList();
+                fragmentTransaction.replace(R.id.fragmentContainerView, repositoryList);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
     }
 
     private void getUser() {
@@ -76,17 +94,54 @@ public class perfilFragment extends Fragment {
         Gson gson = new Gson();
         User userObject = gson.fromJson(userJson, User.class);
 
-        Integer idLanguage = userObject.getPerson()
-                .getAsJsonPrimitive("idLanguage").getAsInt();
-
         TextView txtName = getActivity().findViewById(R.id.txtName);
         TextView txtEmail = getActivity().findViewById(R.id.txtEmail);
         TextView txtDescription = getActivity().findViewById(R.id.txtDescription);
         TextView txtLanguage = getActivity().findViewById(R.id.txtLanguage);
 
         txtName.setText(userObject.getName());
-        txtEmail.setText(userObject.getEmail());;
-        txtDescription.setText(userObject.getDescription());
-        txtLanguage.setText(idLanguage.toString());
+        txtEmail.setText(userObject.getEmail());
+
+        if(userObject.getDescription() == null) {
+            txtDescription.setText("Você não possui descrição :(");
+        }else {
+            txtDescription.setText(userObject.getDescription());
+        }
+
+        try {
+            int idLanguage = userObject.getPerson()
+                    .getAsJsonPrimitive("idLanguage").getAsInt();
+
+            Call<Language> call = RetrofitClient.getInstance().getMyApi().getLanguage(idLanguage, "update2@gmail.com", "12345678", "C");
+            call.enqueue(new Callback<Language>() {
+                @Override
+                public void onResponse(Call<Language> call, Response<Language> response) {
+                    Language language = response.body();
+                    txtLanguage.setText(language.getLanguage());
+                }
+
+                @Override
+                public void onFailure(Call<Language> call, Throwable t) {
+                    Log.d("ERROR GETLANGUAGE", t.toString());
+                }
+            });
+        }catch (NullPointerException e) {
+            txtLanguage.setText("Você não possui uma linguagem :(");
+        }
     }
+
+//    private void getLanguage(int idLanguage){
+//        Call<Language> call = RetrofitClient.getInstance().getMyApi().getLanguage(idLanguage, "update2@gmail.com", "12345678", "C");
+//        call.enqueue(new Callback<Language>() {
+//            @Override
+//            public void onResponse(Call<Language> call, Response<Language> response) {
+//                Language language = response.body();
+//            }
+//
+//            @Override
+//            public void onFailure(Call<Language> call, Throwable t) {
+//                Log.d("ERROR GETLANGUAGE", t.toString());
+//            }
+//        });
+//    }
 }

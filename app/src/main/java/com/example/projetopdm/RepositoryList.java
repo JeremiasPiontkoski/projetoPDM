@@ -1,5 +1,7 @@
 package com.example.projetopdm;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -56,7 +58,10 @@ public class RepositoryList extends Fragment {
 
     private void getRepositories()
     {
-        Call<List<Repository>> call = RetrofitClient.getInstance().getMyApi().getRepositories("hope@gmail.com", "12345678", "C");
+        SharedPreferences preferences = getActivity().getSharedPreferences(LoginActivity.KEY_PREFERENCE, Context.MODE_PRIVATE);
+        String email = preferences.getString(LoginActivity.KEY_USER_HEADER_EMAIL, "");
+        String password = preferences.getString(LoginActivity.KEY_USER_HEADER_PASSWORD, "");
+        Call<List<Repository>> call = RetrofitClient.getInstance().getMyApi().getRepositories(email, password, "C");
         call.enqueue(new Callback<List<Repository>>() {
             @Override
             public void onResponse(Call<List<Repository>> call, Response<List<Repository>> response) {
