@@ -1,6 +1,7 @@
 package com.example.projetopdm;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.annotation.SuppressLint;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -23,15 +25,12 @@ public class HomeActivity extends AppCompatActivity {
     ImageView imgPerfil;
     ImageView imgHome;
 
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
         Intent it = getIntent();
-
-        User user = getIntent().getExtras().getParcelable(LoginActivity.KEY_USER);
 
         imgCreateRepository = findViewById(R.id.imgCreateRepository);
         imgPerfil = findViewById(R.id.imgPerfil);

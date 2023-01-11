@@ -1,13 +1,22 @@
 package com.example.projetopdm;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.gson.Gson;
+
+import org.w3c.dom.Text;
 
 import java.io.Serializable;
 
@@ -17,7 +26,6 @@ import java.io.Serializable;
  * create an instance of this fragment.
  */
 public class perfilFragment extends Fragment {
-
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "user";
@@ -30,9 +38,8 @@ public class perfilFragment extends Fragment {
         // Required empty public constructor
     }
 
-
     // TODO: Rename and change types and number of parameters
-    public static perfilFragment newInstance(User user) {
+    public static perfilFragment newInstance(String user) {
         perfilFragment fragment = new perfilFragment();
         Bundle args = new Bundle();
         args.putSerializable(ARG_PARAM1, (Serializable) user);
@@ -47,7 +54,6 @@ public class perfilFragment extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
         }
-
     }
 
     @Override
@@ -55,5 +61,32 @@ public class perfilFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_perfil, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        getUser();
+    }
+
+    private void getUser() {
+        SharedPreferences preferences = getActivity().getSharedPreferences(LoginActivity.KEY_PREFERENCE, Context.MODE_PRIVATE);
+        String userJson = preferences.getString(LoginActivity.KEY_USER_DATA, "");
+
+        Gson gson = new Gson();
+        User userObject = gson.fromJson(userJson, User.class);
+
+        Integer idLanguage = userObject.getPerson()
+                .getAsJsonPrimitive("idLanguage").getAsInt();
+
+        TextView txtName = getActivity().findViewById(R.id.txtName);
+        TextView txtEmail = getActivity().findViewById(R.id.txtEmail);
+        TextView txtDescription = getActivity().findViewById(R.id.txtDescription);
+        TextView txtLanguage = getActivity().findViewById(R.id.txtLanguage);
+
+        txtName.setText(userObject.getName());
+        txtEmail.setText(userObject.getEmail());;
+        txtDescription.setText(userObject.getDescription());
+        txtLanguage.setText(idLanguage.toString());
     }
 }

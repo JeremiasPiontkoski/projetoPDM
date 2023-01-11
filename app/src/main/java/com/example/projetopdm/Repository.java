@@ -1,6 +1,7 @@
 package com.example.projetopdm;
 
 import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 
 public class Repository {
@@ -8,7 +9,6 @@ public class Repository {
     private String name;
     private String language;
     private String description;
-    private JsonArray repository;
 
     public Repository(int id, String name, String language, String description){
         this.id = id;
@@ -47,13 +47,5 @@ public class Repository {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public JsonArray getRepository() {
-        return repository;
-    }
-
-    public void setRepository(JsonArray repository) {
-        this.repository = repository;
     }
 }

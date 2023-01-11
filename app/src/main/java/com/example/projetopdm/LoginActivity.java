@@ -6,14 +6,18 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.os.SharedMemory;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.gson.Gson;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -27,6 +31,9 @@ public class LoginActivity extends AppCompatActivity{
     Button btnLogin;
     EditText edtEmail;
     EditText edtPassword;
+
+    public static String KEY_PREFERENCE = "prefs";
+    public static String KEY_USER_DATA = "user";
 
     public static String KEY_USER = "user";
 
@@ -65,18 +72,19 @@ public class LoginActivity extends AppCompatActivity{
     }
 
     private void login() {
-        Call<User> call = RetrofitClient.getInstance().getMyApi().getUser(edtEmail.getText().toString(), edtPassword.getText().toString(), "C");
+//        Call<User> call = RetrofitClient.getInstance().getMyApi().getUser(edtEmail.getText().toString(), edtPassword.getText().toString(), "C");
+        Call<User> call = RetrofitClient.getInstance().getMyApi().getUser("update2@gmail.com", "12345678", "C");
 
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 User user = response.body();
 
-                User user1 = new User(user.getCode(), user.getId(), user.getName(), user.getEmail(), user.getDescription());
+//                User user1 = new User(user.getCode(), user.getId(), user.getName(), user.getEmail(), user.getDescription());
 
                 if(user.isLogged()) {
+                    saveData(user);
                     Intent it = new Intent(LoginActivity.this, HomeActivity.class);
-                    it.putExtra(KEY_USER, user);
                     startActivity(it);
                 }else {
                     Toast.makeText(LoginActivity.this, "Email e/ou senha inválidos!", Toast.LENGTH_SHORT).show();
@@ -90,5 +98,14 @@ public class LoginActivity extends AppCompatActivity{
                 Log.d("NAO VAI", t.toString());
             }
         });
+    }
+
+    private void saveData(User user) {
+        SharedPreferences preferences = getSharedPreferences(KEY_PREFERENCE, MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        Gson gson = new Gson();
+        String userData = gson.toJson(user);
+        editor.putString(KEY_USER_DATA, userData);
+        editor.commit();
     }
 }

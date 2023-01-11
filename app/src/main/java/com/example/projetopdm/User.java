@@ -3,6 +3,8 @@ package com.example.projetopdm;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.JsonObject;
+
 public class User implements Parcelable {
     private int id;
     private String name;
@@ -11,13 +13,15 @@ public class User implements Parcelable {
     private String description;
     private String code;
     private String message;
+    private JsonObject person;
 
-    public User(String code, int id, String name, String email, String description) {
+    public User(String code, int id, String name, String email, String description, JsonObject person) {
         this.code = code;
         this.id = id;
         this.name = name;
         this.email = email;
         this.description = description;
+        this.person = person;
     }
 
     public User(String code, String message) {
@@ -108,6 +112,14 @@ public class User implements Parcelable {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public JsonObject getPerson() {
+        return person;
+    }
+
+    public void setPerson(JsonObject person) {
+        this.person = person;
     }
 
     @Override

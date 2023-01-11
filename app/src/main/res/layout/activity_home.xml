@@ -20,13 +20,13 @@
         android:layout_height="60dp"
         android:orientation="horizontal"
         android:gravity="center"
-        
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        
+
         android:background="@color/green_600">
-        
+
         <ImageView
             android:id="@+id/imgHome"
             android:layout_width="45dp"

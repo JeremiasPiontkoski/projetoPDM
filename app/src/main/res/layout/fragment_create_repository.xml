@@ -6,9 +6,29 @@
     tools:context=".HomeActivity"
     tools:ignore="MissingDefaultResource">
 
-    <!-- TODO: Update blank fragment layout -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvRepositories"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textName"
+            android:text="TEXTO"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonClick"
+            android:text="TESTANDO" />
+
+
+    </LinearLayout>
+
+    <!--    &lt;!&ndash; TODO: Update blank fragment layout &ndash;&gt;-->
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/rvRepositories"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent" />-->
 </FrameLayout>
