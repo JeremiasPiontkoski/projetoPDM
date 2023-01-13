@@ -19,6 +19,9 @@ public interface Api {
     @GET("getRepository/{idRepository}")
     Call<Repository> getRepositoryById(@Path("idRepository") int idRepository);
 
+    @GET("repositoriesByPerson")
+    Call<List<Repository>> getRepositoriesByPerson(@Header("Email")String email, @Header("Password") String password, @Header("Rule") String rule);
+
     @GET("repositories")
     Call<List<Repository>> getRepositories(@Header("Email") String email, @Header("Password") String password, @Header("Rule") String rule);
 

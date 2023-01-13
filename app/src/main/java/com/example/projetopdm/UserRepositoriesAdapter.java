@@ -23,12 +23,12 @@ import com.squareup.picasso.Target;
 
 import java.util.ArrayList;
 
-public class RepositoryAdapter extends RecyclerView.Adapter<RepositoryAdapter.ViewHolder> {
+public class UserRepositoriesAdapter extends RecyclerView.Adapter<UserRepositoriesAdapter.ViewHolder> {
 
     ArrayList<Repository> repositories;
     Context context;
 
-    public RepositoryAdapter(ArrayList<Repository> repositories) {
+    public UserRepositoriesAdapter(ArrayList<Repository> repositories) {
         this.repositories = repositories;
     }
 
@@ -45,14 +45,14 @@ public class RepositoryAdapter extends RecyclerView.Adapter<RepositoryAdapter.Vi
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Repository repository = repositories.get(position);
-        holder.txtName.setText(repository.getDescription());
+            holder.txtName.setText(repository.getLanguage());
 
         holder.cvRepository.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FragmentTransaction fragmentTransaction = ((FragmentActivity) context).getSupportFragmentManager().beginTransaction();
-                RepositoryDetail repositoryDetail = RepositoryDetail.newInstance(repository.getId());
-                fragmentTransaction.replace(R.id.fragmentContainerView, repositoryDetail);
+                FragmentRepositoryDetailUser fragmentRepositoryDetailUser = FragmentRepositoryDetailUser.newInstance(repository.getId());
+                fragmentTransaction.replace(R.id.fragmentContainerView, fragmentRepositoryDetailUser);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
             }

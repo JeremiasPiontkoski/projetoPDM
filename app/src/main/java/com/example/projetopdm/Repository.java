@@ -10,11 +10,22 @@ public class Repository {
     private String language;
     private String description;
 
+
+    public String code;
+    public String type;
+    public String message;
+
     public Repository(int id, String name, String language, String description){
         this.id = id;
         this.name = name;
         this.language = language;
         this.description = description;
+    }
+
+    public Repository(String code, String type, String message) {
+        this.code = code;
+        this.type = type;
+        this.message = message;
     }
 
     public String getName() {

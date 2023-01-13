@@ -79,8 +79,8 @@ public class perfilFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                RepositoryList repositoryList = new RepositoryList();
-                fragmentTransaction.replace(R.id.fragmentContainerView, repositoryList);
+                FragmentUserRepositories fragmentUserRepositories = new FragmentUserRepositories();
+                fragmentTransaction.replace(R.id.fragmentContainerView, fragmentUserRepositories);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
             }
