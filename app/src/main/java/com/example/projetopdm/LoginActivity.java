@@ -73,8 +73,10 @@ public class LoginActivity extends AppCompatActivity{
     }
 
     private void login() {
-        String email = "update2@gmail.com";
-        String password = "12345678";
+//        String email = "testing@gmail.com";
+//        String password = "12345678";
+        String email = edtEmail.getText().toString();
+        String password = edtPassword.getText().toString();
 //        Call<User> call = RetrofitClient.getInstance().getMyApi().getUser(edtEmail.getText().toString(), edtPassword.getText().toString(), "C");
         Call<User> call = RetrofitClient.getInstance().getMyApi().getUser(email, password, "C");
 

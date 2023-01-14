@@ -12,12 +12,9 @@ import retrofit2.http.Path;
 public interface Api {
 //    String BASE_URL_PROJECT = "http://localhost/trabalho-pwii/api/";//192.168.0.107
     String BASE_URL_PROJECT = "http://10.0.2.2:80/trabalho-pwii/api/";
-    
-    @GET("getRepo")
-    Call<List<Repository>> getRepository();
 
-    @GET("getRepository/{idRepository}")
-    Call<Repository> getRepositoryById(@Path("idRepository") int idRepository);
+    @GET("repository/{idRepository}")
+    Call<Repository> getRepositoryById(@Path("idRepository") int idRepository, @Header("Email") String email, @Header("Password") String password, @Header("Rule") String rule);
 
     @GET("repositoriesByPerson")
     Call<List<Repository>> getRepositoriesByPerson(@Header("Email")String email, @Header("Password") String password, @Header("Rule") String rule);

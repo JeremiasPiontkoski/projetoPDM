@@ -10,16 +10,19 @@ public class Repository {
     private String language;
     private String description;
 
+    private JsonObject user;
+
 
     public String code;
     public String type;
     public String message;
 
-    public Repository(int id, String name, String language, String description){
+    public Repository(int id, String name, String language, String description, JsonObject user){
         this.id = id;
         this.name = name;
         this.language = language;
         this.description = description;
+        this.user = user;
     }
 
     public Repository(String code, String type, String message) {
@@ -58,5 +61,13 @@ public class Repository {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public JsonObject getUser() {
+        return user;
+    }
+
+    public void setUser(JsonObject user) {
+        this.user = user;
     }
 }

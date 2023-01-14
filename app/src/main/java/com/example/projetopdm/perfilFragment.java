@@ -14,10 +14,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.squareup.picasso.Picasso;
 
 import java.io.Serializable;
 
@@ -98,9 +100,16 @@ public class perfilFragment extends Fragment {
         TextView txtEmail = getActivity().findViewById(R.id.txtEmail);
         TextView txtDescription = getActivity().findViewById(R.id.txtDescription);
         TextView txtLanguage = getActivity().findViewById(R.id.txtLanguage);
+        ImageView ivPerfil = getActivity().findViewById(R.id.ivPerfil);
 
         txtName.setText(userObject.getName());
         txtEmail.setText(userObject.getEmail());
+
+        if(userObject.getPhoto() != null) {
+            Picasso.get().load("http://10.0.2.2:80/trabalho-pwii/" +  userObject.getPhoto()).into(ivPerfil);
+        }else {
+            ivPerfil.setImageResource(R.drawable.image_perfil);
+        }
 
         if(userObject.getDescription() == null) {
             txtDescription.setText("Você não possui descrição :(");
@@ -122,26 +131,11 @@ public class perfilFragment extends Fragment {
 
                 @Override
                 public void onFailure(Call<Language> call, Throwable t) {
-                    Log.d("ERROR GETLANGUAGE", t.toString());
+                    Log.d("ERROR GET LANGUAGE", t.toString());
                 }
             });
         }catch (NullPointerException e) {
             txtLanguage.setText("Você não possui uma linguagem :(");
         }
     }
-
-//    private void getLanguage(int idLanguage){
-//        Call<Language> call = RetrofitClient.getInstance().getMyApi().getLanguage(idLanguage, "update2@gmail.com", "12345678", "C");
-//        call.enqueue(new Callback<Language>() {
-//            @Override
-//            public void onResponse(Call<Language> call, Response<Language> response) {
-//                Language language = response.body();
-//            }
-//
-//            @Override
-//            public void onFailure(Call<Language> call, Throwable t) {
-//                Log.d("ERROR GETLANGUAGE", t.toString());
-//            }
-//        });
-//    }
 }

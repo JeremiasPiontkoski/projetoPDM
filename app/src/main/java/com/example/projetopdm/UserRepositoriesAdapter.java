@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -20,6 +21,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.gson.JsonArray;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -36,7 +39,7 @@ public class UserRepositoriesAdapter extends RecyclerView.Adapter<UserRepositori
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.repository_list_item, parent, false);
+                .inflate(R.layout.repositories_user, parent, false);
 
         this.context = parent.getContext();
         return new ViewHolder(view);
@@ -45,7 +48,9 @@ public class UserRepositoriesAdapter extends RecyclerView.Adapter<UserRepositori
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Repository repository = repositories.get(position);
-            holder.txtName.setText(repository.getLanguage());
+            holder.txtName.setText("Nome: " + repository.getName());
+            holder.txtLanguage.setText("Linguagem: " + repository.getLanguage());
+            holder.txtDescription.setText("Descrição: " + repository.getDescription());
 
         holder.cvRepository.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,10 +71,14 @@ public class UserRepositoriesAdapter extends RecyclerView.Adapter<UserRepositori
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         final TextView txtName;
+        final TextView txtLanguage;
+        final TextView txtDescription;
         final CardView cvRepository;
         public ViewHolder(View view) {
             super(view);
             txtName = (TextView) view.findViewById(R.id.txtName);
+            txtLanguage = (TextView) view.findViewById(R.id.txtLanguage);
+            txtDescription = (TextView) view.findViewById(R.id.txtDescription);
             cvRepository = (CardView) view.findViewById(R.id.cardRepository);
         }
     }

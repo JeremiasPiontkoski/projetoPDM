@@ -45,7 +45,25 @@ public class RepositoryAdapter extends RecyclerView.Adapter<RepositoryAdapter.Vi
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Repository repository = repositories.get(position);
-        holder.txtName.setText(repository.getDescription());
+        holder.txtName.setText("Nome: " + repository.getName());
+        holder.txtLanguage.setText("Linguagem: " + repository.getLanguage());
+
+        try{
+            String userPhoto = repository.getUser()
+                    .getAsJsonPrimitive("photo").getAsString();
+            Picasso.get().load("http://10.0.2.2:80/trabalho-pwii/" +  userPhoto).into(holder.ivPhoto);
+        }catch (ClassCastException e){
+            holder.ivPhoto.setImageResource(R.drawable.image_perfil);
+        }
+
+//        if(userPhoto != null) {
+//            Log.d("PHOTO", "SIM");
+//            Picasso.get().load("http://10.0.2.2:80/trabalho-pwii/" +  userPhoto).into(holder.ivPhoto);
+//        }
+//        else {
+//            Log.d("PHOTO", "NAO");
+//            holder.ivPhoto.setImageResource(R.drawable.image_perfil);
+//        }
 
         holder.cvRepository.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,10 +84,15 @@ public class RepositoryAdapter extends RecyclerView.Adapter<RepositoryAdapter.Vi
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         final TextView txtName;
+        final TextView txtLanguage;
+        final ImageView ivPhoto;
         final CardView cvRepository;
         public ViewHolder(View view) {
             super(view);
+
             txtName = (TextView) view.findViewById(R.id.txtName);
+            txtLanguage = (TextView) view.findViewById(R.id.txtLanguage);
+            ivPhoto = (ImageView) view.findViewById(R.id.ivPerfilRepository);
             cvRepository = (CardView) view.findViewById(R.id.cardRepository);
         }
     }

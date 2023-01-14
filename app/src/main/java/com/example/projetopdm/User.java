@@ -15,12 +15,15 @@ public class User implements Parcelable {
     private String message;
     private JsonObject person;
 
-    public User(String code, int id, String name, String email, String description, JsonObject person) {
+    private String photo;
+
+    public User(String code, int id, String name, String email, String description, String photo, JsonObject person) {
         this.code = code;
         this.id = id;
         this.name = name;
         this.email = email;
         this.description = description;
+        this.photo = photo;
         this.person = person;
     }
 
@@ -120,6 +123,14 @@ public class User implements Parcelable {
 
     public void setPerson(JsonObject person) {
         this.person = person;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
     @Override

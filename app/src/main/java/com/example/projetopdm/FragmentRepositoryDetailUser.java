@@ -73,15 +73,8 @@ public class FragmentRepositoryDetailUser extends Fragment {
         return inflater.inflate(R.layout.fragment_repository_detail_user, container, false);
     }
 
-
-//    @Override
-//    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-//        super.onViewCreated(view, savedInstanceState);
-//        renderRepositories();
-//    }
-
     private void renderRepositories(){
-        Call<Repository> call= RetrofitClient.getInstance().getMyApi().getRepositoryById(idRepository);
+        Call<Repository> call= RetrofitClient.getInstance().getMyApi().getRepositoryById(idRepository, LoginActivity.KEY_USER_HEADER_EMAIL, LoginActivity.KEY_USER_HEADER_PASSWORD, "C");
         call.enqueue(new Callback<Repository>() {
             @Override
             public void onResponse(Call<Repository> call, Response<Repository> response) {
@@ -94,9 +87,6 @@ public class FragmentRepositoryDetailUser extends Fragment {
                 tvLanguage.setText(repo.getLanguage());
                 tvDescription.setText(repo.getDescription());
 
-//                TextView txtName = getActivity().findViewById(R.id.textName);
-
-//                txtName.setText("nova atividade");
             }
 
             @Override
