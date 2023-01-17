@@ -56,15 +56,6 @@ public class RepositoryAdapter extends RecyclerView.Adapter<RepositoryAdapter.Vi
             holder.ivPhoto.setImageResource(R.drawable.image_perfil);
         }
 
-//        if(userPhoto != null) {
-//            Log.d("PHOTO", "SIM");
-//            Picasso.get().load("http://10.0.2.2:80/trabalho-pwii/" +  userPhoto).into(holder.ivPhoto);
-//        }
-//        else {
-//            Log.d("PHOTO", "NAO");
-//            holder.ivPhoto.setImageResource(R.drawable.image_perfil);
-//        }
-
         holder.cvRepository.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

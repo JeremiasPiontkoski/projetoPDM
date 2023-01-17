@@ -58,7 +58,8 @@
                     android:layout_marginTop="10dp"
 
                     android:layout_marginHorizontal="20dp"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:id="@+id/edtName"/>
             </LinearLayout>
 
             <LinearLayout
@@ -83,7 +84,8 @@
                     android:layout_marginTop="10dp"
 
                     android:layout_marginHorizontal="20dp"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:id="@+id/edtEmail"/>
             </LinearLayout>
 
             <LinearLayout
@@ -108,7 +110,8 @@
                     android:layout_marginTop="10dp"
 
                     android:layout_marginHorizontal="20dp"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:id="@+id/edtPassword"/>
             </LinearLayout>
 
             <LinearLayout
@@ -133,7 +136,8 @@
                     android:layout_marginTop="10dp"
 
                     android:layout_marginHorizontal="20dp"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:id="@+id/edtConfirmPassword"/>
             </LinearLayout>
 
             <LinearLayout
@@ -177,7 +181,8 @@
 
                 android:layout_gravity="center"
 
-                android:layout_margin="10dp" />
+                android:layout_margin="10dp"
+                android:id="@+id/btnCreateAcount"/>
 
             <LinearLayout
                 android:layout_width="match_parent"

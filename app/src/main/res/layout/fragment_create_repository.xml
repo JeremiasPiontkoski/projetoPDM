@@ -6,29 +6,117 @@
     tools:context=".HomeActivity"
     tools:ignore="MissingDefaultResource">
 
-    <LinearLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
 
-        <TextView
-            android:layout_width="wrap_content"
+        android:backgroundTint="@color/green_600">
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/textName"
-            android:text="TEXTO"/>
+            android:orientation="vertical"
+            android:layout_gravity="center_vertical">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/buttonClick"
-            android:text="TESTANDO" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/light_col"
+                android:layout_gravity="center"/>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cadastro de Repositório"
+                android:textSize="32dp"
+                android:textColor="@color/white"
+                android:layout_gravity="center"/>
 
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-    <!--    &lt;!&ndash; TODO: Update blank fragment layout &ndash;&gt;-->
-<!--    <androidx.recyclerview.widget.RecyclerView-->
-<!--        android:id="@+id/rvRepositories"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent" />-->
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nome"
+
+                    android:drawableLeft="@drawable/svg_person"
+
+                    android:drawablePadding="10dp"
+
+                    android:textColorHint="@color/gray_100"
+                    android:backgroundTint="@color/white"
+
+                    android:layout_marginTop="10dp"
+
+                    android:layout_marginHorizontal="20dp"
+                    android:textSize="24sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Linguagem"
+
+                    android:inputType="text"
+
+                    android:drawableLeft="@drawable/svg_language"
+
+                    android:drawablePadding="10dp"
+
+                    android:textColorHint="@color/gray_100"
+                    android:backgroundTint="@color/white"
+
+                    android:layout_marginTop="10dp"
+
+                    android:layout_marginHorizontal="20dp"
+                    android:textSize="24sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Descrição"
+
+                    android:inputType="text"
+
+                    android:drawableLeft="@drawable/svg_pencil"
+
+                    android:drawablePadding="10dp"
+
+                    android:textColorHint="@color/gray_100"
+                    android:backgroundTint="@color/white"
+
+                    android:layout_marginTop="10dp"
+
+                    android:layout_marginHorizontal="20dp"
+                    android:textSize="24sp" />
+            </LinearLayout>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CADASTRAR"
+                android:textSize="20sp"
+
+                android:backgroundTint="@color/green_200"
+                android:textColor="@color/gray_500"
+
+                android:layout_gravity="center"
+
+                android:layout_margin="10dp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 </FrameLayout>
